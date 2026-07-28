@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { FaBookOpen as BookOpen, FaUsers as Users, FaTrophy as Trophy, FaBolt as Zap } from 'react-icons/fa'
 import { GlassCard } from '../common/GlassCard'

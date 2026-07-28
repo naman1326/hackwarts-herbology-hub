@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaEnvelope as Mail, FaLock as Lock, FaEye as Eye, FaEyeSlash as EyeOff } from 'react-icons/fa'

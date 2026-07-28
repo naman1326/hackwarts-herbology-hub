@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaHeart as Heart, FaTimes as X, FaComment as MessageCircle } from 'react-icons/fa'
 import { DashboardLayout } from '../components/layout/DashboardLayout'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes as X } from 'react-icons/fa'
 import { cn } from '../../utils/cn'

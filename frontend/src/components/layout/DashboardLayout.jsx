@@ -1,3 +1,4 @@
+import React from 'react'
 import { Navbar } from '../common/Navbar'
 import { FloatingLeaves } from '../animations/FloatingLeaves'
 import { Fireflies } from '../animations/Fireflies'

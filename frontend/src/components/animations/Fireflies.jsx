@@ -1,5 +1,5 @@
+import React, { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { useMemo } from 'react'
 
 export function Fireflies() {
   const fireflies = useMemo(

@@ -7,6 +7,9 @@ export default defineConfig({
       jsxRuntime: 'automatic'
     })
   ],
+  esbuild: {
+    jsx: 'automatic'
+  },
   base: '/hackwarts-herbology-hub/',
   server: {
     port: 3000,

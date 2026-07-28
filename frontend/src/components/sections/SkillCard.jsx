@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { FaStar as Star, FaUsers as Users } from 'react-icons/fa'
 import { GlassCard } from '../common/GlassCard'

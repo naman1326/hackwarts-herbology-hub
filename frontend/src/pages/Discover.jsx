@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { FaSearch as Search, FaFilter as Filter } from 'react-icons/fa'
 import { DashboardLayout } from '../components/layout/DashboardLayout'

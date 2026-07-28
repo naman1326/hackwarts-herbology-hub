@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaCalendar as Calendar, FaClock as Clock, FaUser as User, FaMapPin as MapPin } from 'react-icons/fa'
 import { DashboardLayout } from '../components/layout/DashboardLayout'

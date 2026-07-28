@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaCalendar as Calendar, FaClock as Clock, FaMapPin as MapPin, FaUser as User } from 'react-icons/fa'
 import { GlassCard } from '../common/GlassCard'
 import { Badge } from '../common/Badge'

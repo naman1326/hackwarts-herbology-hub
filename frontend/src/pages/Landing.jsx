@@ -1,3 +1,4 @@
+import React from 'react'
 import { MainLayout } from '../components/layout/MainLayout'
 import { HeroSection } from '../components/sections/HeroSection'
 import { FeatureCards } from '../components/sections/FeatureCards'

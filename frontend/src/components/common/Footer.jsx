@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaEnvelope as Mail, FaMapPin as MapPin, FaPhone as Phone } from 'react-icons/fa'
 

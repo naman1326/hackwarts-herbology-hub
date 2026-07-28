@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaStar as Star, FaEdit as Edit, FaShareAlt as Share2, FaComment as MessageCircle } from 'react-icons/fa'
 import { DashboardLayout } from '../components/layout/DashboardLayout'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { GlassCard } from '../common/GlassCard'
 
 export function DashboardCard({

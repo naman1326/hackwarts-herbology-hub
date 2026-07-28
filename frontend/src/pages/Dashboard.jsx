@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaGift as Gift, FaBookOpen as BookOpen, FaUsers as Users, FaChartLine as TrendingUp } from 'react-icons/fa'
 import { useAuth } from '../hooks/useAuth'

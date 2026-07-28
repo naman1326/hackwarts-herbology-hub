@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { FloatingLeaves } from '../animations/FloatingLeaves'
 import { Fireflies } from '../animations/Fireflies'

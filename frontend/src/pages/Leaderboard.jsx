@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaTrophy as Trophy, FaMedal as Medal, FaChartLine as TrendingUp } from 'react-icons/fa'
 import { DashboardLayout } from '../components/layout/DashboardLayout'

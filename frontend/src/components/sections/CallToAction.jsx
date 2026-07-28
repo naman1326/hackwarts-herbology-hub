@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { FaArrowRight as ArrowRight } from 'react-icons/fa'
 import { Button } from '../common/Button'
