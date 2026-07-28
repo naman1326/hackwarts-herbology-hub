@@ -16,9 +16,6 @@ backend/dist/
 backend/.env
 backend/.env.*
 
-# Frontend folder (ignoring frontend to keep repository backend-only)
-frontend/
-
 # System / IDE
 .DS_Store
 Thumbs.db
