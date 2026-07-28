@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import { currentUser } from '../utils/dummyData'
 
 export const AuthContext = createContext(null)
