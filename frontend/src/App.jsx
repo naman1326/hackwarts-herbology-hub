@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, AuthContext } from './context/AuthContext'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { CustomCursor } from './components/animations/CustomCursor'
 import { LoadingSpinner } from './components/common/LoadingSpinner'
 
@@ -36,6 +36,7 @@ function AppRoutes() {
       {/* Public Routes */}
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Login />} />
 
       {/* Protected Routes */}
       <Route
@@ -94,14 +95,6 @@ function AppRoutes() {
 }
 
 function App() {
-  useEffect(() => {
-    // Hide cursor on desktop (custom cursor is shown)
-    document.body.style.cursor = 'none'
-    return () => {
-      document.body.style.cursor = 'auto'
-    }
-  }, [])
-
   return (
     <AuthProvider>
       <Router>

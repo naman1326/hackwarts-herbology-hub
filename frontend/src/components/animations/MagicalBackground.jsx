@@ -8,20 +8,24 @@ export function MagicalBackground() {
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+
+    const updateSize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    updateSize()
 
     const particles = []
-    const particleCount = 50
+    const particleCount = 25
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
         this.size = Math.random() * 2 + 1
-        this.speedX = Math.random() * 0.5 - 0.25
-        this.speedY = Math.random() * 0.5 - 0.25
-        this.opacity = Math.random() * 0.5 + 0.2
+        this.speedX = Math.random() * 0.4 - 0.2
+        this.speedY = Math.random() * 0.4 - 0.2
+        this.opacity = Math.random() * 0.4 + 0.15
       }
 
       update() {
@@ -46,33 +50,34 @@ export function MagicalBackground() {
       particles.push(new Particle())
     }
 
+    let animId
     const animate = () => {
-      ctx.fillStyle = 'rgba(14, 26, 20, 0.1)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      if (!document.hidden) {
+        ctx.fillStyle = 'rgba(14, 26, 20, 0.15)'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      particles.forEach(particle => {
-        particle.update()
-        particle.draw()
-      })
+        particles.forEach((particle) => {
+          particle.update()
+          particle.draw()
+        })
+      }
 
-      requestAnimationFrame(animate)
+      animId = requestAnimationFrame(animate)
     }
 
     animate()
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+    window.addEventListener('resize', updateSize)
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', updateSize)
     }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 transform-gpu"
       style={{ background: 'transparent' }}
     />
   )

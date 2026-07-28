@@ -54,30 +54,33 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="h-full flex flex-col"
             >
-              <GlassCard>
-                <div className="p-6 space-y-4">
-                  {/* Number Badge */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-5xl font-cinzel font-bold text-accent/30">
-                      {step.number}
-                    </span>
-                    <span className="text-4xl">{step.icon}</span>
+              <GlassCard className="h-full">
+                <div className="p-6 space-y-4 h-full flex flex-col justify-between">
+                  <div className="space-y-4">
+                    {/* Number Badge */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-5xl font-cinzel font-bold text-accent/30">
+                        {step.number}
+                      </span>
+                      <span className="text-4xl">{step.icon}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-cinzel font-bold text-cream">
+                      {step.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-cream/70 text-sm leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-cinzel font-bold text-cream">
-                    {step.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-cream/70 text-sm leading-relaxed">
-                    {step.description}
-                  </p>
 
                   {/* Arrow */}
                   {index < steps.length - 1 && (
-                    <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-12">
+                    <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-12 z-20">
                       <span className="text-3xl text-accent/30">→</span>
                     </div>
                   )}

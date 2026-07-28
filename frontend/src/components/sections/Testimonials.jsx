@@ -29,20 +29,23 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="h-full flex flex-col"
             >
-              <GlassCard hoverEffect>
-                <div className="p-8 space-y-4 h-full flex flex-col">
-                  {/* Stars */}
-                  <div className="flex gap-1">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} size={16} className="text-gold fill-gold" />
-                    ))}
-                  </div>
+              <GlassCard hoverEffect className="h-full">
+                <div className="p-8 space-y-4 h-full flex flex-col justify-between">
+                  <div className="space-y-4 flex-1 flex flex-col">
+                    {/* Stars */}
+                    <div className="flex gap-1">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} size={16} className="text-gold fill-gold" />
+                      ))}
+                    </div>
 
-                  {/* Quote */}
-                  <p className="text-cream/80 italic flex-1">
-                    "{testimonial.text}"
-                  </p>
+                    {/* Quote */}
+                    <p className="text-cream/80 italic flex-1">
+                      "{testimonial.text}"
+                    </p>
+                  </div>
 
                   {/* Author */}
                   <div className="border-t border-white/10 pt-4">

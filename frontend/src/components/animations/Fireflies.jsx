@@ -1,39 +1,27 @@
-import { motion } from 'framer-motion'
 import { useMemo } from 'react'
 
 export function Fireflies() {
   const fireflies = useMemo(
-    () => Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      delay: Math.random() * 3,
-      duration: Math.random() * 3 + 3,
-    })),
+    () => [
+      { id: 1, left: '15%', top: '25%', delay: '0s' },
+      { id: 2, left: '45%', top: '65%', delay: '1.5s' },
+      { id: 3, left: '75%', top: '35%', delay: '0.8s' },
+      { id: 4, left: '85%', top: '80%', delay: '2.2s' },
+    ],
     []
   )
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {fireflies.map(firefly => (
-        <motion.div
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 transform-gpu">
+      {fireflies.map((firefly) => (
+        <div
           key={firefly.id}
-          className="absolute w-1 h-1 rounded-full bg-accent"
+          className="absolute w-1.5 h-1.5 rounded-full bg-accent animate-firefly transform-gpu"
           style={{
-            left: `${firefly.left}%`,
-            top: `${firefly.top}%`,
-            boxShadow: '0 0 10px rgba(183, 215, 106, 0.8)',
-          }}
-          animate={{
-            opacity: [0, 1, 0],
-            y: [0, 30, 0],
-            x: [0, Math.random() * 40 - 20, 0],
-          }}
-          transition={{
-            duration: firefly.duration,
-            delay: firefly.delay,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            left: firefly.left,
+            top: firefly.top,
+            animationDelay: firefly.delay,
+            boxShadow: '0 0 8px rgba(183, 215, 106, 0.7)',
           }}
         />
       ))}

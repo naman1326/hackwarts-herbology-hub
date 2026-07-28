@@ -99,15 +99,17 @@ export function Login() {
                 </button>
               </div>
 
-              <Button
-                type="submit"
-                variant="primary"
-                size="md"
-                className="w-full"
-                isLoading={isLoading}
-              >
-                {isLoading ? 'Casting Spell...' : 'Cast Spell'}
-              </Button>
+              <div className="pt-2">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  className="w-full text-lg font-bold shadow-[0_0_25px_rgba(183,215,106,0.5)] border-2 border-amber-200/80"
+                  isLoading={isLoading}
+                >
+                  {isLoading ? '🔮 Casting Spell...' : '✨ Cast Spell ✨'}
+                </Button>
+              </div>
             </form>
 
             {/* Divider */}

@@ -76,18 +76,20 @@ export function FeatureCards() {
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <motion.div key={index} variants={itemVariants}>
-                <GlassCard hoverEffect>
-                  <div className="p-8 space-y-4">
-                    <div className={`text-5xl text-${feature.color}`}>
-                      <Icon size={48} />
+              <motion.div key={index} variants={itemVariants} className="h-full flex flex-col">
+                <GlassCard hoverEffect className="h-full">
+                  <div className="p-8 space-y-4 h-full flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className={`text-5xl text-${feature.color}`}>
+                        <Icon size={48} />
+                      </div>
+                      <h3 className="text-2xl font-cinzel font-bold text-cream">
+                        {feature.title}
+                      </h3>
+                      <p className="text-cream/70 leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-cinzel font-bold text-cream">
-                      {feature.title}
-                    </h3>
-                    <p className="text-cream/70 leading-relaxed">
-                      {feature.description}
-                    </p>
                   </div>
                 </GlassCard>
               </motion.div>

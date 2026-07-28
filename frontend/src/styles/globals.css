@@ -96,11 +96,18 @@ input, textarea, select {
   color: inherit;
 }
 
-/* Smooth transitions */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
+/* Targeted smooth transitions for interactive elements */
+a, button, input, select, textarea, .glass-card {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Hardware Acceleration Helpers */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Disable transitions on page load */
