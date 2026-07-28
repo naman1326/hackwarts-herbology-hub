@@ -12,12 +12,16 @@ backend/dist/
 .env
 .env.local
 .env.*
+*.env
+backend/.env
+backend/.env.*
 
-# Backend folder (ignoring backend to keep repository frontend-only)
-backend/
+# Frontend folder (ignoring frontend to keep repository backend-only)
+frontend/
 
 # System / IDE
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+
