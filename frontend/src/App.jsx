@@ -1,6 +1,6 @@
+import React, { useContext, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, AuthContext } from './context/AuthContext'
-import { useContext, useEffect } from 'react'
 import { CustomCursor } from './components/animations/CustomCursor'
 import { LoadingSpinner } from './components/common/LoadingSpinner'
 
