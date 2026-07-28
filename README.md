@@ -65,23 +65,140 @@ Welcome to **Hackwarts Herbology Hub**, a wizarding-themed community skill-shari
 
 ```text
 hackwarts-herbology-hub/
+├── .gitignore
 ├── README.md
 ├── backend/
-│   ├── .env                    # Environment variables configuration
-│   ├── package.json            # Backend dependencies & scripts
+│   ├── .env                            # Environment variables configuration
+│   ├── package-lock.json
+│   ├── package.json                    # Backend dependencies & scripts
 │   └── src/
-│       ├── app.js              # Express app setup, middleware & route definitions
-│       ├── server.js           # DB connection & server initialization
-│       ├── config/             # Cloudinary, Database, & Env configurations
-│       ├── controllers/        # Request handlers (auth, user, skill, match, request, schedule, credit, review, leaderboard)
-│       ├── middleware/         # Auth verification, error handling, file upload, validation
-│       ├── models/             # Mongoose schemas (User, Skill, SkillRequest, Schedule, CreditTransaction, Review, Notification)
-│       ├── routes/             # REST API endpoint definitions
-│       ├── services/           # Business logic (Credit transaction ledger, Smart Matching engine, Notifications)
-│       └── utils/              # ApiError, ApiResponse, JWT utilities, Logger
+│       ├── app.js                      # Express app setup, middleware & route definitions
+│       ├── server.js                   # DB connection & server initialization
+│       ├── config/                     # Database, Cloudinary, & Env configurations
+│       │   ├── cloudinary.js           # Cloudinary service integration
+│       │   ├── db.js                   # MongoDB connection configuration
+│       │   └── env.js                  # Environment variable schema validation
+│       ├── controllers/                # Request handlers
+│       │   ├── auth.controller.js      # Auth & registration handlers
+│       │   ├── credit.controller.js    # Credit balance & history handlers
+│       │   ├── leaderboard.controller.js # Community rankings handler
+│       │   ├── match.controller.js     # Smart match recommendations handler
+│       │   ├── request.controller.js   # Skill request lifecycle handlers
+│       │   ├── review.controller.js    # Post-session rating handlers
+│       │   ├── schedule.controller.js   # Session booking handlers
+│       │   ├── skill.controller.js     # Skill catalog handlers
+│       │   └── user.controller.js      # User profile management handlers
+│       ├── middleware/                 # Express middleware functions
+│       │   ├── Errorhandler.js         # Global error handler middleware
+│       │   ├── auth.js                 # JWT cookie & header authentication middleware
+│       │   ├── upload.js               # Multer file upload middleware
+│       │   └── validator.js            # Request input validation middleware
+│       ├── models/                     # Mongoose schemas
+│       │   ├── CreditTransaction.js    # Financial audit log model
+│       │   ├── Notification.js         # In-app user alert model
+│       │   ├── Schedule.js             # Booked session model
+│       │   ├── Skill.js                # Skill listing catalog model
+│       │   ├── SkillRequest.js         # Skill request lifecycle model
+│       │   ├── User.js                 # User account & portfolio model
+│       │   └── review.js               # Bilateral rating & feedback model
+│       ├── routes/                     # REST API route declarations
+│       │   ├── auth.routes.js          # /api/auth routes
+│       │   ├── credit.routes.js        # /api/credits routes
+│       │   ├── leaderboard.routes.js   # /api/leaderboard routes
+│       │   ├── match.routes.js         # /api/matches routes
+│       │   ├── request.routes.js       # /api/requests routes
+│       │   ├── review.routes.js        # /api/reviews routes
+│       │   ├── schedule.routes.js      # /api/schedules routes
+│       │   ├── skill.routes.js         # /api/skills routes
+│       │   └── user.routes.js          # /api/users routes
+│       ├── services/                   # Business logic services
+│       │   ├── credit.service.js       # Atomic credit transaction ledger service
+│       │   ├── matching.service.js     # Weighted skill & geo matching algorithm
+│       │   └── notification.service.js # Event-driven notification generator
+│       └── utils/                      # Helper utilities
+│           ├── ApiError.js             # Custom error response class
+│           ├── ApiResponse.js          # Standardized API response formatter
+│           ├── jwt.js                  # Token generation & verification helpers
+│           └── logger.js               # Application logging utility
 └── frontend/
-    ├── dist/                   # Production build distribution files
-    └── node_modules/
+    ├── index.html                      # HTML document entry point
+    ├── leaf.svg                        # Site favicon asset
+    ├── package-lock.json
+    ├── package.json                    # Frontend dependencies & scripts
+    ├── postcss.config.js               # PostCSS styling configuration
+    ├── tailwind.config.js              # Tailwind CSS configuration
+    ├── vite.config.js                  # Vite build tool configuration
+    ├── public/                         # Static assets directory
+    │   ├── favicon.svg                 # Application favicon
+    │   └── leaf.svg                    # Herbology themed icon asset
+    └── src/                            # Frontend source code
+        ├── App.jsx                     # Application root component & router
+        ├── main.jsx                    # React DOM entry point
+        ├── components/                 # Modular UI components
+        │   ├── animations/             # Visual effects & canvas animations
+        │   │   ├── AnimatedHeading.jsx
+        │   │   ├── CustomCursor.jsx
+        │   │   ├── Fireflies.jsx
+        │   │   ├── FloatingLeaves.jsx
+        │   │   ├── MagicalBackground.jsx
+        │   │   └── PageTransition.jsx
+        │   ├── common/                 # Reusable atomic UI components
+        │   │   ├── Badge.jsx
+        │   │   ├── Button.jsx
+        │   │   ├── EmptyState.jsx
+        │   │   ├── Footer.jsx
+        │   │   ├── GlassCard.jsx
+        │   │   ├── Input.jsx
+        │   │   ├── LoadingSpinner.jsx
+        │   │   ├── Modal.jsx
+        │   │   ├── Navbar.jsx
+        │   │   ├── SkeletonLoader.jsx
+        │   │   └── Tooltip.jsx
+        │   ├── layout/                 # View layout wrappers
+        │   │   ├── AuthLayout.jsx
+        │   │   ├── DashboardLayout.jsx
+        │   │   └── MainLayout.jsx
+        │   ├── modals/                 # Interactive modal overlays
+        │   │   └── AddSkillModal.jsx
+        │   └── sections/               # Composite feature section components
+        │       ├── CallToAction.jsx
+        │       ├── DashboardCard.jsx
+        │       ├── FeatureCards.jsx
+        │       ├── HeroSection.jsx
+        │       ├── HowItWorks.jsx
+        │       ├── MentorCard.jsx
+        │       ├── RecommendationCard.jsx
+        │       ├── SessionCard.jsx
+        │       ├── SkillCard.jsx
+        │       └── Testimonials.jsx
+        ├── context/                    # React Context providers
+        │   └── AuthContext.jsx         # Global authentication state
+        ├── hooks/                      # Custom React hooks
+        │   ├── useAuth.js              # Auth context consumer hook
+        │   ├── useDebounce.js          # Value debouncing hook
+        │   ├── useIntersection.js      # Element visibility observer hook
+        │   ├── useScrollReveal.js      # Scroll animation trigger hook
+        │   └── useWindowSize.js        # Window dimensions hook
+        ├── pages/                      # Application pages
+        │   ├── Dashboard.jsx           # Main user portal & overview
+        │   ├── Discover.jsx            # Skill catalog & search page
+        │   ├── Landing.jsx             # Hero landing page
+        │   ├── Leaderboard.jsx         # Top users & community ranking page
+        │   ├── Login.jsx               # Auth login & signup view
+        │   ├── MatchFeed.jsx           # Algorithmic study partner recommendations
+        │   ├── NotFound.jsx            # 404 page
+        │   ├── Profile.jsx             # Profile management page
+        │   └── SessionScheduler.jsx    # Session scheduling & management view
+        ├── styles/                     # Style definitions
+        │   ├── animations.css          # CSS animation definitions
+        │   ├── globals.css             # Base CSS styles & utilities
+        │   └── theme.css               # Wizarding theme color variables
+        └── utils/                      # Frontend helper utilities
+            ├── animations.js           # Framer motion variants & helpers
+            ├── cn.js                   # Class name merger helper
+            ├── constants.js            # App configuration constants
+            ├── dummyData.js            # Fallback mock data
+            └── validators.js           # Form input validators
 ```
 
 ---
