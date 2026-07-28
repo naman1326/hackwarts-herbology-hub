@@ -6,14 +6,11 @@ import { useAuth } from '../hooks/useAuth'
 import { GlassCard } from '../components/common/GlassCard'
 import { Badge } from '../components/common/Badge'
 import { Button } from '../components/common/Button'
-import { AddSkillModal } from '../components/modals/AddSkillModal'
 import { ACHIEVEMENTS } from '../utils/dummyData'
 
 export function Profile() {
-  const { user, updateUser, toastMessage } = useAuth()
+  const { user, updateUser } = useAuth()
   const [isEditing, setIsEditing] = useState(false)
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
-  const [modalDefaultType, setModalDefaultType] = useState('teach')
   const [formData, setFormData] = useState({
     name: user?.name || '',
     bio: user?.bio || '',
@@ -137,27 +134,15 @@ export function Profile() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
-              {/* Teaching Skills */}
+            {/* Teaching Skills */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-cinzel font-bold text-cream">
-                  Teaching Skills
-                </h2>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setModalDefaultType('teach')
-                    setIsAddModalOpen(true)
-                  }}
-                >
-                  ✨ + Add Skill to Teach
-                </Button>
-              </div>
+              <h2 className="text-2xl font-cinzel font-bold text-cream mb-4">
+                Teaching Skills
+              </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {user?.teachingSkills?.map((skill) => (
                   <GlassCard key={skill.id} hoverEffect>
@@ -181,21 +166,9 @@ export function Profile() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-cinzel font-bold text-cream">
-                  Learning Skills
-                </h2>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setModalDefaultType('learn')
-                    setIsAddModalOpen(true)
-                  }}
-                >
-                  🎓 + Add Skill to Learn
-                </Button>
-              </div>
+              <h2 className="text-2xl font-cinzel font-bold text-cream mb-4">
+                Learning Skills
+              </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {user?.learningSkills?.map((skill) => (
                   <GlassCard key={skill.id} hoverEffect>
@@ -208,13 +181,13 @@ export function Profile() {
                         <motion.div
                           className="h-full bg-accent rounded-full"
                           animate={{
-                            width: `${(skill.sessions || 1) * 10}%`,
+                            width: `${skill.sessions * 10}%`,
                           }}
                           transition={{ duration: 0.5 }}
                         />
                       </div>
                       <p className="text-cream/70 text-sm">
-                        {skill.sessions || 0} sessions attended
+                        {skill.sessions} sessions attended
                       </p>
                     </div>
                   </GlassCard>
@@ -283,13 +256,6 @@ export function Profile() {
           </div>
         </div>
       </div>
-
-      {/* Add Skill Modal */}
-      <AddSkillModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        defaultType={modalDefaultType}
-      />
     </DashboardLayout>
   )
 }

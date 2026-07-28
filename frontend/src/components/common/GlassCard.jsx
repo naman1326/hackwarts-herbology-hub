@@ -13,13 +13,13 @@ export function GlassCard({
       whileHover={hoverEffect ? { y: -8 } : {}}
       transition={{ duration: 0.3 }}
       className={cn(
-        'relative group transform-gpu',
+        'relative group',
         'rounded-2xl overflow-hidden',
-        'bg-[#12221A]/85 backdrop-blur-md',
+        'bg-white/5 backdrop-blur-[20px]',
         'border border-white/10',
-        'shadow-xl',
-        'transition-all duration-200',
-        onClick && 'cursor-pointer hover:bg-[#182C22]/90 hover:border-white/20',
+        'shadow-lg',
+        'transition-all duration-300',
+        onClick && 'cursor-pointer hover:bg-white/8 hover:border-white/20',
         className
       )}
       onClick={onClick}

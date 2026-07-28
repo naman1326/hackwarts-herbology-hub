@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FaCalendar as Calendar, FaClock as Clock, FaUser as User, FaMapPin as MapPin, FaBookOpen as BookOpen } from 'react-icons/fa'
+import { FaCalendar as Calendar, FaClock as Clock, FaUser as User, FaMapPin as MapPin } from 'react-icons/fa'
 import { DashboardLayout } from '../components/layout/DashboardLayout'
 import { GlassCard } from '../components/common/GlassCard'
 import { Button } from '../components/common/Button'

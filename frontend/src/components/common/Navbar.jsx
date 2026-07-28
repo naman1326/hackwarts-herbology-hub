@@ -54,12 +54,19 @@ export function Navbar() {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`px-4 py-2 rounded-lg font-poppins text-sm font-medium transition-all duration-150 ${
+                className={`px-4 py-2 rounded-lg font-poppins transition-all duration-300 relative ${
                   isActive(link.href)
-                    ? 'bg-accent/15 text-accent font-semibold border border-accent/30 shadow-sm'
-                    : 'text-cream/70 hover:text-cream hover:bg-white/5'
+                    ? 'text-accent'
+                    : 'text-cream/70 hover:text-cream'
                 }`}
               >
+                {isActive(link.href) && (
+                  <motion.div
+                    layoutId="navbar-indicator"
+                    className="absolute inset-0 bg-accent/10 rounded-lg -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 40 }}
+                  />
+                )}
                 {link.label}
               </Link>
             ))}
